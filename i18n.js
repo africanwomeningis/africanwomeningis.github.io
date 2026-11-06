@@ -4,6 +4,7 @@ var UI_I18N = {
   en: {
     nav_gis101:"GIS 101", nav_about:"About", nav_story:"Story", nav_why:"Why we exist", nav_programs:"Programs", nav_faq:"FAQ", nav_join:"Join us",
     theme_aria:"Switch between light and dark mode", lang_aria:"Choose language",
+    lang_tip:"You can read this site in French, Arabic, or Portuguese too.",
     hero_eyebrow:"A community of African women in mapping & GIS",
     hero_h1:"Geospatial organization for African women.",
     hero_tagline:"View the geospatial world through the eyes of African women.",
@@ -71,6 +72,7 @@ var UI_I18N = {
   fr: {
     nav_gis101:"SIG 101", nav_about:"À propos", nav_story:"Notre histoire", nav_why:"Pourquoi nous existons", nav_programs:"Programmes", nav_faq:"FAQ", nav_join:"Nous rejoindre",
     theme_aria:"Basculer entre le mode clair et sombre", lang_aria:"Choisir la langue",
+    lang_tip:"Vous pouvez aussi lire ce site en anglais, en arabe ou en portugais.",
     hero_eyebrow:"Une communauté de femmes africaines dans la cartographie et le SIG",
     hero_h1:"Organisation géospatiale pour les femmes africaines.",
     hero_tagline:"Voir le monde géospatial à travers le regard des femmes africaines.",
@@ -138,6 +140,7 @@ var UI_I18N = {
   ar: {
     nav_gis101:"مدخل إلى GIS", nav_about:"من نحن", nav_story:"قصتنا", nav_why:"لماذا نحن موجودات", nav_programs:"برامجنا", nav_faq:"الأسئلة الشائعة", nav_join:"انضمي إلينا",
     theme_aria:"التبديل بين الوضع الفاتح والداكن", lang_aria:"اختيار اللغة",
+    lang_tip:"يمكنك أيضًا قراءة هذا الموقع بالإنجليزية أو الفرنسية أو البرتغالية.",
     hero_eyebrow:"مجتمع للنساء الأفريقيات في مجال الخرائط ونظم المعلومات الجغرافية",
     hero_h1:"منظمة جغرافية مكانية للنساء الأفريقيات.",
     hero_tagline:"شاهدي العالم الجغرافي المكاني من خلال عيون النساء الأفريقيات.",
@@ -205,6 +208,7 @@ var UI_I18N = {
   pt: {
     nav_gis101:"SIG 101", nav_about:"Sobre nós", nav_story:"Nossa história", nav_why:"Por que existimos", nav_programs:"Programas", nav_faq:"Perguntas frequentes", nav_join:"Junte-se a nós",
     theme_aria:"Alternar entre o modo claro e escuro", lang_aria:"Escolher idioma",
+    lang_tip:"Você também pode ler este site em inglês, francês ou árabe.",
     hero_eyebrow:"Uma comunidade de mulheres africanas em mapeamento e SIG",
     hero_h1:"Organização geoespacial para mulheres africanas.",
     hero_tagline:"Veja o mundo geoespacial pelos olhos das mulheres africanas.",
@@ -633,6 +637,8 @@ var COUNTRIES = [
     renderStory(true);
   }
 
+  var dismissLangTip = function(){};
+
   function wireLangSwitch(){
     var btn = document.getElementById('langBtn');
     var menu = document.getElementById('langMenu');
@@ -641,6 +647,7 @@ var COUNTRIES = [
     function openMenu(){ menu.hidden = false; btn.setAttribute('aria-expanded', 'true'); }
     btn.addEventListener('click', function(ev){
       ev.stopPropagation();
+      dismissLangTip();
       if(menu.hidden){ openMenu(); } else { closeMenu(); }
     });
     menu.querySelectorAll('[data-lang]').forEach(function(item){
@@ -657,6 +664,23 @@ var COUNTRIES = [
     });
   }
 
+  /* brief, auto-dismissing nudge pointing at the language switcher so
+     first-time visitors notice it exists */
+  function wireLangTip(){
+    var tip = document.getElementById('langTip');
+    if(!tip) return;
+    var hideTimer = null;
+    function hide(){
+      tip.classList.remove('show');
+      if(hideTimer){ clearTimeout(hideTimer); hideTimer = null; }
+    }
+    dismissLangTip = hide;
+    requestAnimationFrame(function(){
+      requestAnimationFrame(function(){ tip.classList.add('show'); });
+    });
+    hideTimer = setTimeout(hide, 5000);
+  }
+
   function init(){
     wireLangSwitch();
     wireStoryCard();
@@ -664,6 +688,7 @@ var COUNTRIES = [
     root.setAttribute('lang', currentLang);
     root.setAttribute('dir', currentLang === 'ar' ? 'rtl' : 'ltr');
     applyStaticText();
+    wireLangTip();
   }
 
   if(document.readyState === 'loading'){
