@@ -279,6 +279,37 @@
   #toTop.show{opacity:1; transform:translateY(0) scale(1); pointer-events:auto;}
   #toTop:hover{transform:translateY(-3px) scale(1.05);}
 
+  /* language switcher */
+  .lang-switch{position:relative;}
+  .lang-btn{
+    display:flex; align-items:center; gap:6px; height:40px; padding:0 12px; border-radius:999px;
+    border:1px solid var(--line); background:var(--surface); cursor:pointer; color:var(--ink);
+    font-size:.8rem; font-weight:700; transition:transform .18s ease, box-shadow .18s ease;
+  }
+  .lang-btn:hover{transform:translateY(-2px); box-shadow:var(--card-shadow);}
+  .lang-btn .icon{stroke:var(--ink); width:16px; height:16px;}
+  .lang-menu{
+    position:absolute; top:calc(100% + 8px); right:0; min-width:160px; z-index:40;
+    background:var(--bg); border:1px solid var(--line); border-radius:14px; box-shadow:var(--card-shadow);
+    padding:6px; display:grid; gap:2px;
+  }
+  :root[dir="rtl"] .lang-menu{right:auto; left:0;}
+  .lang-menu button{
+    display:flex; align-items:center; justify-content:space-between; width:100%; text-align:start;
+    padding:10px 12px; border-radius:9px; border:none; background:none; cursor:pointer;
+    font-size:.88rem; font-weight:600; color:var(--ink); font-family:inherit;
+  }
+  .lang-menu button:hover{background:var(--surface);}
+  .lang-menu button[aria-current="true"]{color:var(--accent);}
+
+  /* RTL (Arabic) */
+  :root[dir="rtl"] body{font-family:"Cairo","Nunito Sans",sans-serif;}
+  :root[dir="rtl"] h1, :root[dir="rtl"] h2, :root[dir="rtl"] h3,
+  :root[dir="rtl"] .brand, :root[dir="rtl"] .story-loc, :root[dir="rtl"] .tl-date,
+  :root[dir="rtl"] .stat-pill .n, :root[dir="rtl"] .stat-card .n{font-family:"Cairo",sans-serif;}
+  :root[dir="rtl"] .hero .tagline{font-family:"Cairo",sans-serif; font-style:normal;}
+  :root[dir="rtl"] #storyPrev, :root[dir="rtl"] #storyNext{transform:scaleX(-1);}
+
   @media (max-width: 900px){
     .tech-grid{grid-template-columns:repeat(2,1fr);}
   }
@@ -294,7 +325,7 @@
 </style>
 
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Nunito+Sans:wght@400;600;700;800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Nunito+Sans:wght@400;600;700;800&display=swap">
 </head>
 <body>
 
@@ -351,19 +382,31 @@
       AWiGIS
     </div>
     <div class="links">
-      <a href="#what-is-gis">GIS 101</a>
-      <a href="#about">About</a>
-      <a href="#history">Story</a>
-      <a href="#why">Why we exist</a>
-      <a href="#programs">Programs</a>
-      <a href="#faq">FAQ</a>
+      <a href="#what-is-gis" data-i18n="nav_gis101">GIS 101</a>
+      <a href="#about" data-i18n="nav_about">About</a>
+      <a href="#history" data-i18n="nav_story">Story</a>
+      <a href="#why" data-i18n="nav_why">Why we exist</a>
+      <a href="#programs" data-i18n="nav_programs">Programs</a>
+      <a href="#faq" data-i18n="nav_faq">FAQ</a>
     </div>
     <div class="nav-right">
-      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch between light and dark mode">
+      <button class="theme-toggle" id="themeToggle" type="button" data-i18n-aria="theme_aria" aria-label="Switch between light and dark mode">
         <svg class="icon i-sun" width="18" height="18"><use href="#i-sun"/></svg>
         <svg class="icon i-moon" width="18" height="18"><use href="#i-moon"/></svg>
       </button>
-      <a class="btn solid" href="https://docs.google.com/forms/d/e/1FAIpQLSe8adjTyWJ4gCIs7zWx6JO3VRPeu9Npx-WZIGRyuFujnjBZcA/viewform?pli=1" target="_blank" rel="noopener">Join us</a>
+      <div class="lang-switch">
+        <button class="lang-btn" id="langBtn" type="button" data-i18n-aria="lang_aria" aria-label="Choose language" aria-haspopup="true" aria-expanded="false">
+          <svg class="icon" width="16" height="16"><use href="#i-globe"/></svg>
+          <span id="langLabel">EN</span>
+        </button>
+        <div class="lang-menu" id="langMenu" role="menu" hidden>
+          <button type="button" data-lang="en" role="menuitem">English</button>
+          <button type="button" data-lang="fr" role="menuitem">Fran&ccedil;ais</button>
+          <button type="button" data-lang="ar" role="menuitem">&#1575;&#1604;&#1593;&#1585;&#1576;&#1610;&#1577;</button>
+          <button type="button" data-lang="pt" role="menuitem">Portugu&ecirc;s</button>
+        </div>
+      </div>
+      <a class="btn solid" href="https://docs.google.com/forms/d/e/1FAIpQLSe8adjTyWJ4gCIs7zWx6JO3VRPeu9Npx-WZIGRyuFujnjBZcA/viewform?pli=1" target="_blank" rel="noopener" data-i18n="nav_join">Join us</a>
     </div>
   </nav>
 </header>
@@ -377,20 +420,20 @@
     </svg>
     <div class="hero-grid">
       <div>
-        <div class="eyebrow"><svg class="icon" width="16" height="16"><use href="#i-globe"/></svg> A community of African women in mapping &amp; GIS</div>
-        <h1>Geospatial organization for African women.</h1>
-        <p class="tagline">View the geospatial world through the eyes of African women.</p>
+        <div class="eyebrow"><svg class="icon" width="16" height="16"><use href="#i-globe"/></svg> <span data-i18n="hero_eyebrow">A community of African women in mapping &amp; GIS</span></div>
+        <h1 data-i18n="hero_h1">Geospatial organization for African women.</h1>
+        <p class="tagline" data-i18n="hero_tagline">View the geospatial world through the eyes of African women.</p>
         <div class="cta-row">
-          <a class="btn solid" href="https://docs.google.com/forms/d/e/1FAIpQLSe8adjTyWJ4gCIs7zWx6JO3VRPeu9Npx-WZIGRyuFujnjBZcA/viewform?pli=1" target="_blank" rel="noopener">Register &amp; join us</a>
-          <a class="btn ghost" href="https://arcg.is/1qvKi8" target="_blank" rel="noopener">Read our story</a>
-          <a class="btn ghost" href="#followLinks">Follow us</a>
+          <a class="btn solid" href="https://docs.google.com/forms/d/e/1FAIpQLSe8adjTyWJ4gCIs7zWx6JO3VRPeu9Npx-WZIGRyuFujnjBZcA/viewform?pli=1" target="_blank" rel="noopener" data-i18n="cta_register">Register &amp; join us</a>
+          <a class="btn ghost" href="https://arcg.is/1qvKi8" target="_blank" rel="noopener" data-i18n="cta_story">Read our story</a>
+          <a class="btn ghost" href="#followLinks" data-i18n="cta_follow">Follow us</a>
         </div>
 
         <div class="stat-row">
-          <div class="stat-pill"><div class="n" data-count data-target="1000" data-suffix="+">0</div><div class="l">members</div></div>
-          <div class="stat-pill"><div class="n" data-count data-target="30" data-suffix="+">0</div><div class="l">countries</div></div>
-          <div class="stat-pill"><div class="n" data-count data-target="15" data-suffix="+">0</div><div class="l">volunteers</div></div>
-          <div class="stat-pill"><div class="n" data-count data-target="2019" data-suffix="">0</div><div class="l">founded</div></div>
+          <div class="stat-pill"><div class="n" data-count data-target="1000" data-suffix="+">0</div><div class="l" data-i18n="stat_members">members</div></div>
+          <div class="stat-pill"><div class="n" data-count data-target="30" data-suffix="+">0</div><div class="l" data-i18n="stat_countries">countries</div></div>
+          <div class="stat-pill"><div class="n" data-count data-target="15" data-suffix="+">0</div><div class="l" data-i18n="stat_volunteers">volunteers</div></div>
+          <div class="stat-pill"><div class="n" data-count data-target="2019" data-suffix="">0</div><div class="l" data-i18n="stat_founded">founded</div></div>
         </div>
       </div>
 
@@ -405,9 +448,9 @@
             <p class="story-text" id="storyText">Launched Alsat-1 in 2002, Algeria's first satellite, shortly after founding the Algerian Space Agency.</p>
           </div>
           <div class="story-nav">
-            <button class="story-btn" id="storyPrev" type="button" aria-label="Previous country">‹</button>
+            <button class="story-btn" id="storyPrev" type="button" data-i18n-aria="story_prev_aria" aria-label="Previous country">‹</button>
             <div class="story-count" id="storyCount">1 / 54</div>
-            <button class="story-btn" id="storyNext" type="button" aria-label="Next country">›</button>
+            <button class="story-btn" id="storyNext" type="button" data-i18n-aria="story_next_aria" aria-label="Next country">›</button>
           </div>
         </div>
       </div>
@@ -418,41 +461,41 @@
 
   <!-- WHAT IS GIS -->
   <section id="what-is-gis" class="reveal">
-    <div class="eyebrow"><svg class="icon" width="16" height="16"><use href="#i-globe"/></svg> New to GIS?</div>
+    <div class="eyebrow"><svg class="icon" width="16" height="16"><use href="#i-globe"/></svg> <span data-i18n="gis101_eyebrow">New to GIS?</span></div>
     <div class="head" style="margin-top:16px;">
-      <h2>What is GIS, and why does it matter?</h2>
-      <p>GIS, short for Geographic Information Systems, is technology that turns location and map data into real decisions: the software behind planning a hospital, tracking a flood, or routing a delivery in minutes instead of hours. AWiGIS exists to make sure African women are building and leading that work.</p>
+      <h2 data-i18n="gis101_h2">What is GIS, and why does it matter?</h2>
+      <p data-i18n="gis101_p">GIS, short for Geographic Information Systems, is technology that turns location and map data into real decisions: the software behind planning a hospital, tracking a flood, or routing a delivery in minutes instead of hours. AWiGIS exists to make sure African women are building and leading that work.</p>
     </div>
     <div class="tech-grid">
       <div class="tech-card">
         <div class="ico-wrap"><svg class="icon" width="20" height="20"><use href="#i-satellite"/></svg></div>
-        <h3>Satellite imagery &amp; remote sensing</h3>
-        <p>Pictures of Earth from space, used to track change like deforestation or flooding.</p>
+        <h3 data-i18n="tech1_h3">Satellite imagery &amp; remote sensing</h3>
+        <p data-i18n="tech1_p">Pictures of Earth from space, used to track change like deforestation or flooding.</p>
       </div>
       <div class="tech-card">
         <div class="ico-wrap"><svg class="icon" width="20" height="20"><use href="#i-compass"/></svg></div>
-        <h3>Drones &amp; aerial mapping</h3>
-        <p>Flying cameras that map small areas, like a farm or construction site, in incredible detail.</p>
+        <h3 data-i18n="tech2_h3">Drones &amp; aerial mapping</h3>
+        <p data-i18n="tech2_p">Flying cameras that map small areas, like a farm or construction site, in incredible detail.</p>
       </div>
       <div class="tech-card">
         <div class="ico-wrap"><svg class="icon" width="20" height="20"><use href="#i-layers"/></svg></div>
-        <h3>Digital twins &amp; 3D mapping</h3>
-        <p>Realistic digital copies of real places, used to plan cities before anything gets built.</p>
+        <h3 data-i18n="tech3_h3">Digital twins &amp; 3D mapping</h3>
+        <p data-i18n="tech3_p">Realistic digital copies of real places, used to plan cities before anything gets built.</p>
       </div>
       <div class="tech-card">
         <div class="ico-wrap"><svg class="icon" width="20" height="20"><use href="#i-spark"/></svg></div>
-        <h3>AI &amp; machine learning</h3>
-        <p>Software that spots patterns in map data faster, and at a bigger scale, than any human could.</p>
+        <h3 data-i18n="tech4_h3">AI &amp; machine learning</h3>
+        <p data-i18n="tech4_p">Software that spots patterns in map data faster, and at a bigger scale, than any human could.</p>
       </div>
       <div class="tech-card">
         <div class="ico-wrap"><svg class="icon" width="20" height="20"><use href="#i-case"/></svg></div>
-        <h3>Location intelligence</h3>
-        <p>Turning "where" data into business and policy decisions, from store sites to disaster response.</p>
+        <h3 data-i18n="tech5_h3">Location intelligence</h3>
+        <p data-i18n="tech5_p">Turning "where" data into business and policy decisions, from store sites to disaster response.</p>
       </div>
       <div class="tech-card">
         <div class="ico-wrap"><svg class="icon" width="20" height="20"><use href="#i-map"/></svg></div>
-        <h3>Web &amp; mobile mapping</h3>
-        <p>The interactive maps you already use every day, in ride-hailing and delivery apps.</p>
+        <h3 data-i18n="tech6_h3">Web &amp; mobile mapping</h3>
+        <p data-i18n="tech6_p">The interactive maps you already use every day, in ride-hailing and delivery apps.</p>
       </div>
     </div>
   </section>
@@ -461,19 +504,19 @@
 
   <!-- ABOUT -->
   <section id="about" class="reveal">
-    <div class="eyebrow"><svg class="icon" width="16" height="16"><use href="#i-people"/></svg> Who we are</div>
-    <div class="head" style="margin-top:16px;"><h2>A safe, welcoming space, whatever stage you're at.</h2></div>
+    <div class="eyebrow"><svg class="icon" width="16" height="16"><use href="#i-people"/></svg> <span data-i18n="about_eyebrow">Who we are</span></div>
+    <div class="head" style="margin-top:16px;"><h2 data-i18n="about_h2">A safe, welcoming space, whatever stage you're at.</h2></div>
     <div class="about-grid">
       <div>
-        <p>We're African women from all over the world who work in, study, or are simply curious about GIS and mapping. No matter your level, from total beginner to 20-year expert, there's a place for you here.</p>
-        <p>Being part of AWiGIS means making friends who get it, finding mentors, getting honest career advice, working on real mapping projects for your portfolio, hearing about job openings first, and learning about courses worth taking.</p>
-        <p>Membership itself is just for women, but most of our events are open to everyone, because the more people who understand this field, the better.</p>
+        <p data-i18n="about_p1">We're African women from all over the world who work in, study, or are simply curious about GIS and mapping. No matter your level, from total beginner to 20-year expert, there's a place for you here.</p>
+        <p data-i18n="about_p2">Being part of AWiGIS means making friends who get it, finding mentors, getting honest career advice, working on real mapping projects for your portfolio, hearing about job openings first, and learning about courses worth taking.</p>
+        <p data-i18n="about_p3">Membership itself is just for women, but most of our events are open to everyone, because the more people who understand this field, the better.</p>
       </div>
       <div class="stat-stack">
-        <div class="stat-card"><div class="ico-wrap"><svg class="icon" width="20" height="20"><use href="#i-people"/></svg></div><div><div class="n">1000+</div><div class="l">members in the community</div></div></div>
-        <div class="stat-card"><div class="ico-wrap"><svg class="icon" width="20" height="20"><use href="#i-globe"/></svg></div><div><div class="n">30+</div><div class="l">African countries represented</div></div></div>
-        <div class="stat-card"><div class="ico-wrap"><svg class="icon" width="20" height="20"><use href="#i-heart"/></svg></div><div><div class="n">15+</div><div class="l">volunteers who keep it running</div></div></div>
-        <div class="note">As of May 2022, most members were in Nigeria, Kenya, Ghana, Egypt, and South Africa.</div>
+        <div class="stat-card"><div class="ico-wrap"><svg class="icon" width="20" height="20"><use href="#i-people"/></svg></div><div><div class="n">1000+</div><div class="l" data-i18n="about_stat1">members in the community</div></div></div>
+        <div class="stat-card"><div class="ico-wrap"><svg class="icon" width="20" height="20"><use href="#i-globe"/></svg></div><div><div class="n">30+</div><div class="l" data-i18n="about_stat2">African countries represented</div></div></div>
+        <div class="stat-card"><div class="ico-wrap"><svg class="icon" width="20" height="20"><use href="#i-heart"/></svg></div><div><div class="n">15+</div><div class="l" data-i18n="about_stat3">volunteers who keep it running</div></div></div>
+        <div class="note" data-i18n="about_note">As of May 2022, most members were in Nigeria, Kenya, Ghana, Egypt, and South Africa.</div>
       </div>
     </div>
   </section>
@@ -483,13 +526,13 @@
     <div class="mv-grid">
       <div class="mv-card">
         <div class="ico-wrap"><svg class="icon" width="22" height="22"><use href="#i-heart"/></svg></div>
-        <h3>Our mission</h3>
-        <p>A safe space for African women in geospatial work, no matter where you are in your career.</p>
+        <h3 data-i18n="mission_h3">Our mission</h3>
+        <p data-i18n="mission_p">A safe space for African women in geospatial work, no matter where you are in your career.</p>
       </div>
       <div class="mv-card">
         <div class="ico-wrap"><svg class="icon" width="22" height="22"><use href="#i-compass"/></svg></div>
-        <h3>Our vision</h3>
-        <p>To close the gender gap in Africa's geospatial industry, one member at a time.</p>
+        <h3 data-i18n="vision_h3">Our vision</h3>
+        <p data-i18n="vision_p">To close the gender gap in Africa's geospatial industry, one member at a time.</p>
       </div>
     </div>
   </section>
@@ -498,25 +541,25 @@
 
   <!-- HISTORY -->
   <section id="history" class="reveal">
-    <div class="eyebrow"><svg class="icon" width="16" height="16"><use href="#i-map"/></svg> Our story</div>
-    <div class="head" style="margin-top:16px;"><h2>Two small groups that grew into one big family.</h2></div>
-    <p style="margin-bottom:20px; font-size:.9rem;">Tap any moment to read more.</p>
+    <div class="eyebrow"><svg class="icon" width="16" height="16"><use href="#i-map"/></svg> <span data-i18n="history_eyebrow">Our story</span></div>
+    <div class="head" style="margin-top:16px;"><h2 data-i18n="history_h2">Two small groups that grew into one big family.</h2></div>
+    <p style="margin-bottom:20px; font-size:.9rem;" data-i18n="history_hint">Tap any moment to read more.</p>
     <div class="timeline">
       <details class="tl-item" open>
-        <summary><span class="tl-date">2017</span><span class="tl-title">Women in GIS: Nigeria begins</span><span class="tl-plus"><svg class="icon" width="14" height="14" style="stroke:var(--ink)"><use href="#i-plus"/></svg></span></summary>
-        <div class="tl-body"><p>Chidimma C. Umeogu starts a small platform for women in GIS in Nigeria.</p></div>
+        <summary><span class="tl-date" data-i18n="tl1_date">2017</span><span class="tl-title" data-i18n="tl1_title">Women in GIS: Nigeria begins</span><span class="tl-plus"><svg class="icon" width="14" height="14" style="stroke:var(--ink)"><use href="#i-plus"/></svg></span></summary>
+        <div class="tl-body"><p data-i18n="tl1_body">Chidimma C. Umeogu starts a small platform for women in GIS in Nigeria.</p></div>
       </details>
       <details class="tl-item">
-        <summary><span class="tl-date">2019</span><span class="tl-title">Women in GIS: Ghana begins</span><span class="tl-plus"><svg class="icon" width="14" height="14" style="stroke:var(--ink)"><use href="#i-plus"/></svg></span></summary>
-        <div class="tl-body"><p>Cyhana L. Williams starts a sister platform for women in GIS in Ghana.</p></div>
+        <summary><span class="tl-date" data-i18n="tl2_date">2019</span><span class="tl-title" data-i18n="tl2_title">Women in GIS: Ghana begins</span><span class="tl-plus"><svg class="icon" width="14" height="14" style="stroke:var(--ink)"><use href="#i-plus"/></svg></span></summary>
+        <div class="tl-body"><p data-i18n="tl2_body">Cyhana L. Williams starts a sister platform for women in GIS in Ghana.</p></div>
       </details>
       <details class="tl-item">
-        <summary><span class="tl-date">Jun 2019</span><span class="tl-title">Chidimma and Cyhana meet on LinkedIn</span><span class="tl-plus"><svg class="icon" width="14" height="14" style="stroke:var(--ink)"><use href="#i-plus"/></svg></span></summary>
-        <div class="tl-body"><p>The two founders connect online and realize they're solving the same problem for two different countries.</p></div>
+        <summary><span class="tl-date" data-i18n="tl3_date">Jun 2019</span><span class="tl-title" data-i18n="tl3_title">Chidimma and Cyhana meet on LinkedIn</span><span class="tl-plus"><svg class="icon" width="14" height="14" style="stroke:var(--ink)"><use href="#i-plus"/></svg></span></summary>
+        <div class="tl-body"><p data-i18n="tl3_body">The two founders connect online and realize they're solving the same problem for two different countries.</p></div>
       </details>
       <details class="tl-item">
-        <summary><span class="tl-date">Oct 2019</span><span class="tl-title">African Women in GIS is born</span><span class="tl-plus"><svg class="icon" width="14" height="14" style="stroke:var(--ink)"><use href="#i-plus"/></svg></span></summary>
-        <div class="tl-body"><p>The two groups join forces into one continent-wide community, starting with 41 members from Nigeria, 11 from Ghana, and 1 from Burkina Faso.</p></div>
+        <summary><span class="tl-date" data-i18n="tl4_date">Oct 2019</span><span class="tl-title" data-i18n="tl4_title">African Women in GIS is born</span><span class="tl-plus"><svg class="icon" width="14" height="14" style="stroke:var(--ink)"><use href="#i-plus"/></svg></span></summary>
+        <div class="tl-body"><p data-i18n="tl4_body">The two groups join forces into one continent-wide community, starting with 41 members from Nigeria, 11 from Ghana, and 1 from Burkina Faso.</p></div>
       </details>
     </div>
   </section>
@@ -525,18 +568,18 @@
 
   <!-- WHY WE EXIST (flip cards: problem -> how we help) -->
   <section id="why" class="reveal">
-    <div class="eyebrow"><svg class="icon" width="16" height="16"><use href="#i-spark"/></svg> Why we exist</div>
-    <div class="head" style="margin-top:16px;"><h2>Real problems, and what we do about each one.</h2><p>Tap a card to flip it and see how AWiGIS helps.</p></div>
+    <div class="eyebrow"><svg class="icon" width="16" height="16"><use href="#i-spark"/></svg> <span data-i18n="why_eyebrow">Why we exist</span></div>
+    <div class="head" style="margin-top:16px;"><h2 data-i18n="why_h2">Real problems, and what we do about each one.</h2><p data-i18n="why_hint">Tap a card to flip it and see how AWiGIS helps.</p></div>
     <div class="flip-grid">
       <div class="flip-card" tabindex="0" role="button" aria-pressed="false">
         <div class="flip-inner">
           <div class="flip-face flip-front">
             <svg class="icon" width="24" height="24"><use href="#i-people"/></svg>
-            <p><b>Geospatial work has long been male-dominated</b>, with few women in senior roles to look up to.</p>
-            <div class="flip-tap">Tap to see how we help ↻</div>
+            <p data-i18n-html="why1_front_html"><b>Geospatial work has long been male-dominated</b>, with few women in senior roles to look up to.</p>
+            <div class="flip-tap" data-i18n="flip_tap">Tap to see how we help ↻</div>
           </div>
           <div class="flip-face flip-back">
-            <p>We connect members with <b>mentors and role models</b>: women further along the path who are ready to guide you.</p>
+            <p data-i18n-html="why1_back_html">We connect members with <b>mentors and role models</b>: women further along the path who are ready to guide you.</p>
           </div>
         </div>
       </div>
@@ -544,11 +587,11 @@
         <div class="flip-inner">
           <div class="flip-face flip-front">
             <svg class="icon" width="24" height="24"><use href="#i-spark"/></svg>
-            <p><b>Few young women hear about GIS careers growing up</b>, and some parents discourage the idea entirely.</p>
-            <div class="flip-tap">Tap to see how we help ↻</div>
+            <p data-i18n-html="why2_front_html"><b>Few young women hear about GIS careers growing up</b>, and some parents discourage the idea entirely.</p>
+            <div class="flip-tap" data-i18n="flip_tap">Tap to see how we help ↻</div>
           </div>
           <div class="flip-face flip-back">
-            <p>We run <b>free public webinars</b> and share real member stories, so more girls and families see what's possible.</p>
+            <p data-i18n-html="why2_back_html">We run <b>free public webinars</b> and share real member stories, so more girls and families see what's possible.</p>
           </div>
         </div>
       </div>
@@ -556,11 +599,11 @@
         <div class="flip-inner">
           <div class="flip-face flip-front">
             <svg class="icon" width="24" height="24"><use href="#i-case"/></svg>
-            <p><b>Jobs, courses, and events can be hard to find</b>, and often too expensive to reach.</p>
-            <div class="flip-tap">Tap to see how we help ↻</div>
+            <p data-i18n-html="why3_front_html"><b>Jobs, courses, and events can be hard to find</b>, and often too expensive to reach.</p>
+            <div class="flip-tap" data-i18n="flip_tap">Tap to see how we help ↻</div>
           </div>
           <div class="flip-face flip-back">
-            <p>We share <b>job leads, free resources, and affordable opportunities</b> directly with our members.</p>
+            <p data-i18n-html="why3_back_html">We share <b>job leads, free resources, and affordable opportunities</b> directly with our members.</p>
           </div>
         </div>
       </div>
@@ -568,11 +611,11 @@
         <div class="flip-inner">
           <div class="flip-face flip-front">
             <svg class="icon" width="24" height="24"><use href="#i-chat"/></svg>
-            <p><b>Most women in GIS don't know a community like this exists</b> at all.</p>
-            <div class="flip-tap">Tap to see how we help ↻</div>
+            <p data-i18n-html="why4_front_html"><b>Most women in GIS don't know a community like this exists</b> at all.</p>
+            <div class="flip-tap" data-i18n="flip_tap">Tap to see how we help ↻</div>
           </div>
           <div class="flip-face flip-back">
-            <p>We make noise on purpose, through <b>public events, social media, and word of mouth</b>, so no one has to go it alone.</p>
+            <p data-i18n-html="why4_back_html">We make noise on purpose, through <b>public events, social media, and word of mouth</b>, so no one has to go it alone.</p>
           </div>
         </div>
       </div>
@@ -583,31 +626,31 @@
 
   <!-- PROGRAMS -->
   <section id="programs" class="reveal">
-    <div class="eyebrow"><svg class="icon" width="16" height="16"><use href="#i-cap"/></svg> What we offer</div>
-    <div class="head" style="margin-top:16px;"><h2>Programs built around what members actually ask for.</h2></div>
+    <div class="eyebrow"><svg class="icon" width="16" height="16"><use href="#i-cap"/></svg> <span data-i18n="programs_eyebrow">What we offer</span></div>
+    <div class="head" style="margin-top:16px;"><h2 data-i18n="programs_h2">Programs built around what members actually ask for.</h2></div>
     <div class="prog-grid">
       <div class="prog-card">
-        <h3 style="font-size:1.1rem;">Mentorship programme</h3>
-        <p style="color:var(--ink); font-size:.95rem;">Every round (we call it a "cohort") pairs newer members with mentors who've been exactly where you are.</p>
+        <h3 style="font-size:1.1rem;" data-i18n="mentorship_h3">Mentorship programme</h3>
+        <p style="color:var(--ink); font-size:.95rem;" data-i18n="mentorship_p">Every round (we call it a "cohort") pairs newer members with mentors who've been exactly where you are.</p>
         <div style="display:grid; gap:12px; margin-top:4px;">
-          <div class="cohort-row" style="--w:41%"><span>Round 1</span><div class="bar"><span></span></div><span class="ct">9 mentees · 7 mentors</span></div>
-          <div class="cohort-row" style="--w:91%"><span>Round 2</span><div class="bar"><span></span></div><span class="ct">20 mentees · 14 mentors</span></div>
-          <div class="cohort-row" style="--w:100%"><span>Round 3</span><div class="bar"><span></span></div><span class="ct">22 mentees · 13 mentors</span></div>
+          <div class="cohort-row" style="--w:41%"><span data-i18n="round1_label">Round 1</span><div class="bar"><span></span></div><span class="ct" data-i18n="round1_stats">9 mentees · 7 mentors</span></div>
+          <div class="cohort-row" style="--w:91%"><span data-i18n="round2_label">Round 2</span><div class="bar"><span></span></div><span class="ct" data-i18n="round2_stats">20 mentees · 14 mentors</span></div>
+          <div class="cohort-row" style="--w:100%"><span data-i18n="round3_label">Round 3</span><div class="bar"><span></span></div><span class="ct" data-i18n="round3_stats">22 mentees · 13 mentors</span></div>
         </div>
-        <div class="note">And still growing. Bars show mentee count relative to the biggest round so far.</div>
+        <div class="note" data-i18n="mentorship_note">And still growing. Bars show mentee count relative to the biggest round so far.</div>
       </div>
       <div class="prog-list">
         <div class="item">
           <div class="ico-wrap"><svg class="icon" width="18" height="18"><use href="#i-mic"/></svg></div>
-          <div><h3>Public webinars &amp; events</h3><p>Open to everyone, not just members. Our very first was the IWD 2020 webinar.</p></div>
+          <div><h3 data-i18n="prog1_h3">Public webinars &amp; events</h3><p data-i18n="prog1_p">Open to everyone, not just members. Our very first was the IWD 2020 webinar.</p></div>
         </div>
         <div class="item">
           <div class="ico-wrap"><svg class="icon" width="18" height="18"><use href="#i-chat"/></svg></div>
-          <div><h3>Private member groups</h3><p>A WhatsApp space for African women in Africa or the diaspora, to network and swap opportunities.</p></div>
+          <div><h3 data-i18n="prog2_h3">Private member groups</h3><p data-i18n="prog2_p">A WhatsApp space for African women in Africa or the diaspora, to network and swap opportunities.</p></div>
         </div>
         <div class="item">
           <div class="ico-wrap"><svg class="icon" width="18" height="18"><use href="#i-case"/></svg></div>
-          <div><h3>Career &amp; portfolio support</h3><p>Real project opportunities, job leads, and course recommendations, shared right in the group.</p></div>
+          <div><h3 data-i18n="prog3_h3">Career &amp; portfolio support</h3><p data-i18n="prog3_p">Real project opportunities, job leads, and course recommendations, shared right in the group.</p></div>
         </div>
       </div>
     </div>
@@ -615,31 +658,31 @@
 
   <!-- IDENTITY -->
   <section class="reveal" style="padding-block:clamp(36px,6vw,64px);">
-    <div class="eyebrow"><svg class="icon" width="16" height="16"><use href="#i-spark"/></svg> Our colours</div>
-    <div class="head" style="margin-top:16px; margin-bottom:24px;"><h2 style="font-size:1.4rem;">What our colours mean. Tap to flip.</h2></div>
+    <div class="eyebrow"><svg class="icon" width="16" height="16"><use href="#i-spark"/></svg> <span data-i18n="colours_eyebrow">Our colours</span></div>
+    <div class="head" style="margin-top:16px; margin-bottom:24px;"><h2 style="font-size:1.4rem;" data-i18n="colours_h2">What our colours mean. Tap to flip.</h2></div>
     <div class="swatch-row">
       <div class="swatch" tabindex="0" role="button" aria-pressed="false">
         <div class="swatch-inner">
-          <div class="swatch-face" style="background:#2E7D45;"><b>Leafy green</b></div>
-          <div class="swatch-face swatch-back"><span>Our love for nature &amp; geography</span></div>
+          <div class="swatch-face" style="background:#2E7D45;"><b data-i18n="swatch1_name">Leafy green</b></div>
+          <div class="swatch-face swatch-back"><span data-i18n="swatch1_meaning">Our love for nature &amp; geography</span></div>
         </div>
       </div>
       <div class="swatch" tabindex="0" role="button" aria-pressed="false">
         <div class="swatch-inner">
-          <div class="swatch-face" style="background:#1B2117;"><b>Pitch black</b></div>
-          <div class="swatch-face swatch-back"><span>Unity and support among members</span></div>
+          <div class="swatch-face" style="background:#1B2117;"><b data-i18n="swatch2_name">Pitch black</b></div>
+          <div class="swatch-face swatch-back"><span data-i18n="swatch2_meaning">Unity and support among members</span></div>
         </div>
       </div>
       <div class="swatch" tabindex="0" role="button" aria-pressed="false">
         <div class="swatch-inner">
-          <div class="swatch-face" style="background:#9AA68E;"><b>Light grey</b></div>
-          <div class="swatch-face swatch-back"><span>Gender equity</span></div>
+          <div class="swatch-face" style="background:#9AA68E;"><b data-i18n="swatch3_name">Light grey</b></div>
+          <div class="swatch-face swatch-back"><span data-i18n="swatch3_meaning">Gender equity</span></div>
         </div>
       </div>
       <div class="swatch" tabindex="0" role="button" aria-pressed="false">
         <div class="swatch-inner">
-          <div class="swatch-face" style="background:#FFFBF4; border:1px solid var(--line);"><b style="color:var(--accent); text-shadow:none;">Pure white</b></div>
-          <div class="swatch-face swatch-back"><span>Safety and a safe space</span></div>
+          <div class="swatch-face" style="background:#FFFBF4; border:1px solid var(--line);"><b style="color:var(--accent); text-shadow:none;" data-i18n="swatch4_name">Pure white</b></div>
+          <div class="swatch-face swatch-back"><span data-i18n="swatch4_meaning">Safety and a safe space</span></div>
         </div>
       </div>
     </div>
@@ -649,28 +692,28 @@
 
   <!-- FAQ -->
   <section id="faq" class="reveal">
-    <div class="eyebrow"><svg class="icon" width="16" height="16"><use href="#i-chat"/></svg> Quick questions</div>
-    <div class="head" style="margin-top:16px;"><h2>New to this? Start here.</h2></div>
+    <div class="eyebrow"><svg class="icon" width="16" height="16"><use href="#i-chat"/></svg> <span data-i18n="faq_eyebrow">Quick questions</span></div>
+    <div class="head" style="margin-top:16px;"><h2 data-i18n="faq_h2">New to this? Start here.</h2></div>
     <div class="faq">
       <details class="faq-item">
-        <summary><span class="tl-plus"><svg class="icon" width="12" height="12" style="stroke:var(--ink)"><use href="#i-plus"/></svg></span> What even is GIS?</summary>
-        <p>Short for Geographic Information Systems: software that turns maps and locations into tools for real decisions, like where to put a clinic or how to track flooding.</p>
+        <summary><span class="tl-plus"><svg class="icon" width="12" height="12" style="stroke:var(--ink)"><use href="#i-plus"/></svg></span> <span data-i18n="faq1_q">What even is GIS?</span></summary>
+        <p data-i18n="faq1_a">Short for Geographic Information Systems: software that turns maps and locations into tools for real decisions, like where to put a clinic or how to track flooding.</p>
       </details>
       <details class="faq-item">
-        <summary><span class="tl-plus"><svg class="icon" width="12" height="12" style="stroke:var(--ink)"><use href="#i-plus"/></svg></span> Do I need a GIS job already to join?</summary>
-        <p>Not at all. Students, complete beginners, and "just curious" women are just as welcome as working professionals.</p>
+        <summary><span class="tl-plus"><svg class="icon" width="12" height="12" style="stroke:var(--ink)"><use href="#i-plus"/></svg></span> <span data-i18n="faq2_q">Do I need a GIS job already to join?</span></summary>
+        <p data-i18n="faq2_a">Not at all. Students, complete beginners, and "just curious" women are just as welcome as working professionals.</p>
       </details>
       <details class="faq-item">
-        <summary><span class="tl-plus"><svg class="icon" width="12" height="12" style="stroke:var(--ink)"><use href="#i-plus"/></svg></span> Is it free to join?</summary>
-        <p>Yes, membership is free. You just need to be an African woman, in Africa or the diaspora.</p>
+        <summary><span class="tl-plus"><svg class="icon" width="12" height="12" style="stroke:var(--ink)"><use href="#i-plus"/></svg></span> <span data-i18n="faq3_q">Is it free to join?</span></summary>
+        <p data-i18n="faq3_a">Yes, membership is free. You just need to be an African woman, in Africa or the diaspora.</p>
       </details>
       <details class="faq-item">
-        <summary><span class="tl-plus"><svg class="icon" width="12" height="12" style="stroke:var(--ink)"><use href="#i-plus"/></svg></span> I live outside Africa. Can I still join?</summary>
-        <p>Yes, we welcome African women in the diaspora as well, not just those currently living on the continent.</p>
+        <summary><span class="tl-plus"><svg class="icon" width="12" height="12" style="stroke:var(--ink)"><use href="#i-plus"/></svg></span> <span data-i18n="faq4_q">I live outside Africa. Can I still join?</span></summary>
+        <p data-i18n="faq4_a">Yes, we welcome African women in the diaspora as well, not just those currently living on the continent.</p>
       </details>
       <details class="faq-item">
-        <summary><span class="tl-plus"><svg class="icon" width="12" height="12" style="stroke:var(--ink)"><use href="#i-plus"/></svg></span> What do I actually get as a member?</summary>
-        <p>A private WhatsApp community, mentorship opportunities, job and course leads, and invites to events, plus a lot of people cheering you on.</p>
+        <summary><span class="tl-plus"><svg class="icon" width="12" height="12" style="stroke:var(--ink)"><use href="#i-plus"/></svg></span> <span data-i18n="faq5_q">What do I actually get as a member?</span></summary>
+        <p data-i18n="faq5_a">A private WhatsApp community, mentorship opportunities, job and course leads, and invites to events, plus a lot of people cheering you on.</p>
       </details>
     </div>
   </section>
@@ -679,23 +722,23 @@
 
   <!-- JOIN -->
   <section id="join" class="reveal">
-    <div class="eyebrow"><svg class="icon" width="16" height="16"><use href="#i-heart"/></svg> Join the community</div>
-    <div class="head" style="margin-top:16px;"><h2>Ready to meet 1000+ women who understand you?</h2></div>
+    <div class="eyebrow"><svg class="icon" width="16" height="16"><use href="#i-heart"/></svg> <span data-i18n="join_eyebrow">Join the community</span></div>
+    <div class="head" style="margin-top:16px;"><h2 data-i18n="join_h2">Ready to meet 1000+ women who understand you?</h2></div>
     <div class="join-grid">
       <div>
-        <p>Our community has become a real source of motivation for African women building careers in GIS. We want to keep growing: reaching more women, introducing younger generations to mapping careers, and helping Africa get the full benefit of this field.</p>
-        <p style="margin-top:14px;">If that sounds like you, or you're just curious, come say hello.</p>
+        <p data-i18n="join_p1">Our community has become a real source of motivation for African women building careers in GIS. We want to keep growing: reaching more women, introducing younger generations to mapping careers, and helping Africa get the full benefit of this field.</p>
+        <p style="margin-top:14px;" data-i18n="join_p2">If that sounds like you, or you're just curious, come say hello.</p>
         <div class="cta-row" style="margin-top:24px;">
-          <a class="btn solid" href="https://docs.google.com/forms/d/e/1FAIpQLSe8adjTyWJ4gCIs7zWx6JO3VRPeu9Npx-WZIGRyuFujnjBZcA/viewform?pli=1" target="_blank" rel="noopener">Register &amp; join us</a>
+          <a class="btn solid" href="https://docs.google.com/forms/d/e/1FAIpQLSe8adjTyWJ4gCIs7zWx6JO3VRPeu9Npx-WZIGRyuFujnjBZcA/viewform?pli=1" target="_blank" rel="noopener" data-i18n="cta_register">Register &amp; join us</a>
         </div>
       </div>
       <div class="link-list" id="followLinks">
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSe8adjTyWJ4gCIs7zWx6JO3VRPeu9Npx-WZIGRyuFujnjBZcA/viewform?pli=1" target="_blank" rel="noopener">Register &amp; join <span class="arrow">↗</span></a>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSe8adjTyWJ4gCIs7zWx6JO3VRPeu9Npx-WZIGRyuFujnjBZcA/viewform?pli=1" target="_blank" rel="noopener"><span data-i18n="link_register">Register &amp; join</span> <span class="arrow">↗</span></a>
         <a href="mailto:africanwomeningis@gmail.com">africanwomeningis@gmail.com <span class="arrow">↗</span></a>
-        <a href="https://arcg.is/1qvKi8" target="_blank" rel="noopener">Our story (StoryMap) <span class="arrow">↗</span></a>
-        <a href="https://www.linkedin.com/company/african-women-in-gis/" target="_blank" rel="noopener">LinkedIn <span class="arrow">↗</span></a>
-        <a href="https://x.com/africwomeningis" target="_blank" rel="noopener">X / Twitter <span class="arrow">↗</span></a>
-        <a href="https://www.youtube.com/channel/UCNshvwcwdarK3ROp2nBrFSw" target="_blank" rel="noopener">YouTube <span class="arrow">↗</span></a>
+        <a href="https://arcg.is/1qvKi8" target="_blank" rel="noopener"><span data-i18n="link_storymap">Our story (StoryMap)</span> <span class="arrow">↗</span></a>
+        <a href="https://www.linkedin.com/company/african-women-in-gis/" target="_blank" rel="noopener"><span data-i18n="link_linkedin">LinkedIn</span> <span class="arrow">↗</span></a>
+        <a href="https://x.com/africwomeningis" target="_blank" rel="noopener"><span data-i18n="link_x">X / Twitter</span> <span class="arrow">↗</span></a>
+        <a href="https://www.youtube.com/channel/UCNshvwcwdarK3ROp2nBrFSw" target="_blank" rel="noopener"><span data-i18n="link_youtube">YouTube</span> <span class="arrow">↗</span></a>
       </div>
     </div>
   </section>
@@ -706,13 +749,14 @@
   <div class="wrap">
     <div style="display:flex; align-items:center; gap:12px;">
       <img class="footer-mark" src="assets/logo.png" alt="">
-      <span>© African Women in GIS (AWiGIS)</span>
+      <span data-i18n="footer_copyright">© African Women in GIS (AWiGIS)</span>
     </div>
   </div>
 </footer>
 
-<button id="toTop" aria-label="Back to top"><svg class="icon" width="18" height="18" style="stroke:var(--accent-ink)"><use href="#i-up"/></svg></button>
+<button id="toTop" data-i18n-aria="toTop_aria" aria-label="Back to top"><svg class="icon" width="18" height="18" style="stroke:var(--accent-ink)"><use href="#i-up"/></svg></button>
 
+<script src="i18n.js"></script>
 <script>
 (function(){
   // theme: explicit light/dark, persisted per viewer
@@ -792,124 +836,6 @@
   }
   wireFlip('.flip-card');
   wireFlip('.swatch');
-
-  // cover page story stepper: every African country, with key details and a
-  // verified geospatial / space / geography fact (not AWiGIS trivia).
-  // Populations are rounded estimates (UN / World Bank range), shown with "~".
-  (function(){
-    var card = document.getElementById('storyCard');
-    if(!card) return;
-    var countries = [
-      {name:'Algeria', capital:'Algiers', population:'46,814,308 (World Bank, 2024)', region:'North Africa', factType:'space', animal:'fox', text:'Launched Alsat-1 in 2002, Algeria\'s first satellite, shortly after founding the Algerian Space Agency.'},
-      {name:'Angola', capital:'Luanda', population:'37,885,849 (World Bank, 2024)', region:'Central Africa', factType:'space', animal:'antelope', text:'Operates AngoSat-2, a communications satellite launched in 2022 after its predecessor failed.'},
-      {name:'Benin', capital:'Porto-Novo', population:'14,462,724 (World Bank, 2024)', region:'West Africa', factType:'geography', animal:'squirrel', text:'Co-hosts Pendjari National Park, part of a UNESCO World Heritage transboundary wildlife complex.'},
-      {name:'Botswana', capital:'Gaborone', population:'2,521,139 (World Bank, 2024)', region:'Southern Africa', factType:'space', animal:'zebra', text:'Put its first satellite, BOTSAT-1, into orbit in 2025.'},
-      {name:'Burkina Faso', capital:'Ouagadougou', population:'23,548,781 (World Bank, 2024)', region:'West Africa', factType:'geography', animal:'horse', text:'Lies almost entirely within the Sahel, the semi-arid belt between the Sahara and tropical savanna.'},
-      {name:'Burundi', capital:'Gitega', population:'14,047,786 (World Bank, 2024)', region:'East Africa', factType:'geography', animal:'bird', text:'Borders Lake Tanganyika, the world\'s second-deepest and second-largest freshwater lake by volume.'},
-      {name:'Cabo Verde', capital:'Praia', population:'524,877 (World Bank, 2024)', region:'West Africa', factType:'geography', animal:'fish', text:'A volcanic archipelago of 10 islands, home to Pico do Fogo, one of the Atlantic\'s active volcanoes.'},
-      {name:'Cameroon', capital:'Yaoundé', population:'29,123,744 (World Bank, 2024)', region:'Central Africa', factType:'geography', animal:'lion', text:'Nicknamed "Africa in miniature" for containing nearly every major African landscape and climate.'},
-      {name:'Central African Republic', capital:'Bangui', population:'5,330,690 (World Bank, 2024)', region:'Central Africa', factType:'geography', animal:'elephant', text:'Sits on the watershed between the Chad and Congo River basins.'},
-      {name:'Chad', capital:'N\'Djamena', population:'20,299,123 (World Bank, 2024)', region:'Central Africa', factType:'geography', animal:'elephant', text:'Home to Lake Chad, once one of Africa\'s largest lakes, now a fraction of its former size.'},
-      {name:'Comoros', capital:'Moroni', population:'866,628 (World Bank, 2024)', region:'East Africa', factType:'geography', animal:'fish', text:'A volcanic archipelago where Mount Karthala, the largest volcano in Comoros, erupts every few years.'},
-      {name:'Congo', capital:'Brazzaville', population:'6,332,961 (World Bank, 2024)', region:'Central Africa', factType:'geography', animal:'gorilla', text:'Brazzaville and Kinshasa face each other across the Congo River, the closest pair of capitals in the world.'},
-      {name:'Côte d\'Ivoire', capital:'Yamoussoukro', population:'31,934,230 (World Bank, 2024)', region:'West Africa', factType:'space', animal:'elephant', text:'Won the UN/JAXA KiboCUBE programme in 2024 to build and launch its first CubeSat from the ISS.'},
-      {name:'DR Congo', capital:'Kinshasa', population:'109,276,265 (World Bank, 2024)', region:'Central Africa', factType:'geography', animal:'leopard', text:'Carries the Congo River, Africa\'s deepest river and the world\'s second-largest by discharge volume.'},
-      {name:'Djibouti', capital:'Djibouti', population:'1,168,722 (World Bank, 2024)', region:'East Africa', factType:'space', animal:'fish', text:'Launched its first satellite, Djibouti-1, then added Djibouti-1B to orbit in 2024.'},
-      {name:'Egypt', capital:'Cairo', population:'116,538,258 (World Bank, 2024)', region:'North Africa', factType:'space', animal:'crocodile', text:'Launched EgyptSat-1 in 2007 and now operates one of Africa\'s largest satellite fleets.'},
-      {name:'Equatorial Guinea', capital:'Malabo', population:'1,892,516 (World Bank, 2024)', region:'Central Africa', factType:'geography', animal:'lemur', text:'Africa\'s only Spanish-speaking nation, with Annobón Island sitting almost on the Equator.'},
-      {name:'Eritrea', capital:'Asmara', population:'3,535,603 (World Bank, 2024)', region:'East Africa', factType:'geography', animal:'camel', text:'Borders the Red Sea for over 1,000 km and includes the 200-plus islands of the Dahlak Archipelago.'},
-      {name:'Eswatini', capital:'Mbabane', population:'1,242,822 (World Bank, 2024)', region:'Southern Africa', factType:'geography', animal:'rhino', text:'One of the world\'s last absolute monarchies, almost entirely bordered by South Africa.'},
-      {name:'Ethiopia', capital:'Addis Ababa', population:'132,059,767 (World Bank, 2024)', region:'East Africa', factType:'space', animal:'antelope', text:'Launched ETRSS-1 in 2019, its first satellite, built with Chinese partners for agriculture and climate monitoring.'},
-      {name:'Gabon', capital:'Libreville', population:'2,538,952 (World Bank, 2024)', region:'Central Africa', factType:'geography', animal:'leopard', text:'Over 85% of its land is covered by rainforest, among the highest forest cover of any country on Earth.'},
-      {name:'Gambia', capital:'Banjul', population:'2,759,988 (World Bank, 2024)', region:'West Africa', factType:'geography', animal:'scorpion', text:'Africa\'s smallest mainland country, shaped entirely around the Gambia River.'},
-      {name:'Ghana', capital:'Accra', population:'34,427,414 (World Bank, 2024)', region:'West Africa', factType:'space', animal:'elephant', text:'GhanaSat-1, launched in 2017, was built by three student engineers at All Nations University.'},
-      {name:'Guinea', capital:'Conakry', population:'14,754,785 (World Bank, 2024)', region:'West Africa', factType:'geography', animal:'elephant', text:'Source of the Niger, Gambia, and Senegal Rivers, earning it the nickname "water tower of West Africa."'},
-      {name:'Guinea-Bissau', capital:'Bissau', population:'2,201,352 (World Bank, 2024)', region:'West Africa', factType:'geography', animal:'fox', text:'Home to the Bijagós Archipelago, an 88-island UNESCO Biosphere Reserve.'},
-      {name:'Kenya', capital:'Nairobi', population:'56,432,944 (World Bank, 2024)', region:'East Africa', factType:'space', animal:'lion', text:'Launched Taifa-1 in 2023, its first operational Earth-observation satellite.'},
-      {name:'Lesotho', capital:'Maseru', population:'2,337,423 (World Bank, 2024)', region:'Southern Africa', factType:'geography', animal:'crocodile', text:'The only country in the world lying entirely above 1,000 metres, nicknamed the "Kingdom in the Sky."'},
-      {name:'Liberia', capital:'Monrovia', population:'5,612,817 (World Bank, 2024)', region:'West Africa', factType:'geography', animal:'hippo', text:'Holds one of the largest remaining stretches of West Africa\'s Upper Guinean rainforest.'},
-      {name:'Libya', capital:'Tripoli', population:'7,381,023 (World Bank, 2024)', region:'North Africa', factType:'geography', animal:'antelope', text:'The Sahara Desert covers about 90% of Libya\'s land area.'},
-      {name:'Madagascar', capital:'Antananarivo', population:'31,964,956 (World Bank, 2024)', region:'East Africa', factType:'geography', animal:'lemur', text:'The world\'s 4th-largest island, isolated for about 88 million years, giving it unmatched biodiversity.'},
-      {name:'Malawi', capital:'Lilongwe', population:'21,655,286 (World Bank, 2024)', region:'East Africa', factType:'geography', animal:'fish', text:'Dominated by Lake Malawi, Africa\'s third-largest and one of the world\'s deepest lakes.'},
-      {name:'Mali', capital:'Bamako', population:'24,478,595 (World Bank, 2024)', region:'West Africa', factType:'geography', animal:'eagle', text:'About two-thirds of Mali lies within the Sahara, home to the historic trading city of Timbuktu.'},
-      {name:'Mauritania', capital:'Nouakchott', population:'5,169,395 (World Bank, 2024)', region:'West Africa', factType:'geography', animal:'bird', text:'About 90% desert, making it one of the most sparsely populated countries on Earth.'},
-      {name:'Mauritius', capital:'Port Louis', population:'1,245,779 (World Bank, 2024)', region:'East Africa', factType:'space', animal:'dodo', text:'MIR-SAT1, Mauritius\' first satellite, launched in 2021 through the UN/JAXA KiboCUBE programme.'},
-      {name:'Morocco', capital:'Rabat', population:'38,081,173 (World Bank, 2024)', region:'North Africa', factType:'space', animal:'lion', text:'Operates the Mohammed VI-A and VI-B Earth-observation satellites for mapping and disaster response.'},
-      {name:'Mozambique', capital:'Maputo', population:'34,631,766 (World Bank, 2024)', region:'East Africa', factType:'geography', animal:'snake', text:'Has one of Africa\'s longest coastlines, stretching over 2,500 km along the Indian Ocean.'},
-      {name:'Namibia', capital:'Windhoek', population:'3,030,131 (World Bank, 2024)', region:'Southern Africa', factType:'geography', animal:'cheetah', text:'Home to the Namib, believed to be the world\'s oldest desert, with some of the tallest dunes on Earth.'},
-      {name:'Niger', capital:'Niamey', population:'27,032,412 (World Bank, 2024)', region:'West Africa', factType:'geography', animal:'antelope', text:'More than 80% of Niger\'s land lies within the Sahara Desert.'},
-      {name:'Nigeria', capital:'Abuja', population:'232,679,478 (World Bank, 2024)', region:'West Africa', factType:'space', animal:'eagle', text:'Launched NigeriaSat-1 in 2003, among Africa\'s earliest Earth-observation satellites.'},
-      {name:'Rwanda', capital:'Kigali', population:'14,256,567 (World Bank, 2024)', region:'East Africa', factType:'space', animal:'gorilla', text:'Deployed RWASAT-1 in 2019, Rwanda\'s first satellite, built with the University of Tokyo and ArkEdge Space.'},
-      {name:'São Tomé and Príncipe', capital:'São Tomé', population:'235,536 (World Bank, 2024)', region:'Central Africa', factType:'geography', animal:'bird', text:'Africa\'s second-smallest country, whose islet of Rolas sits almost exactly on the Equator.'},
-      {name:'Senegal', capital:'Dakar', population:'18,501,984 (World Bank, 2024)', region:'West Africa', factType:'space', animal:'lion', text:'Launched GaindéSat-1A in 2024, its first satellite, built by a team of Senegalese engineers.'},
-      {name:'Seychelles', capital:'Victoria', population:'121,354 (World Bank, 2024)', region:'East Africa', factType:'geography', animal:'tortoise', text:'An archipelago of 115 islands and Africa\'s smallest country by population.'},
-      {name:'Sierra Leone', capital:'Freetown', population:'8,642,022 (World Bank, 2024)', region:'West Africa', factType:'geography', animal:'lion', text:'Freetown\'s natural harbour is one of the largest deep-water harbours in the world.'},
-      {name:'Somalia', capital:'Mogadishu', population:'19,009,151 (World Bank, 2024)', region:'East Africa', factType:'geography', animal:'camel', text:'Has the longest coastline on mainland Africa, stretching more than 3,300 km.'},
-      {name:'South Africa', capital:'Pretoria', population:'64,007,187 (World Bank, 2024)', region:'Southern Africa', factType:'space', animal:'antelope', text:'Built SUNSAT in 1999, the first satellite designed and built in Africa to reach orbit.'},
-      {name:'South Sudan', capital:'Juba', population:'11,943,408 (World Bank, 2024)', region:'East Africa', factType:'geography', animal:'antelope', text:'Home to the Sudd, one of the world\'s largest wetlands, fed by the White Nile.'},
-      {name:'Sudan', capital:'Khartoum', population:'50,448,963 (World Bank, 2024)', region:'North Africa', factType:'geography', animal:'crocodile', text:'Khartoum sits exactly where the Blue Nile and White Nile meet to form the Nile River.'},
-      {name:'Tanzania', capital:'Dodoma', population:'68,560,157 (World Bank, 2024)', region:'East Africa', factType:'geography', animal:'lion', text:'Home to Mount Kilimanjaro, Africa\'s highest peak at 5,895 metres.'},
-      {name:'Togo', capital:'Lomé', population:'8,406,558 (World Bank, 2024)', region:'West Africa', factType:'geography', animal:'bird', text:'Stretches about 540 km north to south but only around 100 to 160 km across at its widest.'},
-      {name:'Tunisia', capital:'Tunis', population:'12,277,109 (World Bank, 2024)', region:'North Africa', factType:'space', animal:'eagle', text:'Built Challenge-1, a nanosatellite developed independently by a Tunisian company and launched in 2021.'},
-      {name:'Uganda', capital:'Kampala', population:'50,015,092 (World Bank, 2024)', region:'East Africa', factType:'space', animal:'bird', text:'Launched PearlAfricaSat-1, its first satellite, to support agriculture and resource mapping.'},
-      {name:'Zambia', capital:'Lusaka', population:'21,314,956 (World Bank, 2024)', region:'East Africa', factType:'geography', animal:'eagle', text:'Shares Victoria Falls with Zimbabwe, one of the largest waterfalls on Earth.'},
-      {name:'Zimbabwe', capital:'Harare', population:'16,634,373 (World Bank, 2024)', region:'East Africa', factType:'space', animal:'eagle', text:'Put ZimSat-1 into orbit in 2022, its first satellite, built with Japanese university support.'}
-    ];
-    var AUTO_MS = 5500;
-    var reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
-    var fillEl = document.getElementById('storyFill');
-    var body = document.getElementById('storyBody');
-    var locEl = document.getElementById('storyLoc');
-    var regionEl = document.getElementById('storyRegion');
-    var detailsEl = document.getElementById('storyDetails');
-    var textEl = document.getElementById('storyText');
-    var iconUse = document.querySelector('#storyIconUse use');
-    var countEl = document.getElementById('storyCount');
-    var prevBtn = document.getElementById('storyPrev');
-    var nextBtn = document.getElementById('storyNext');
-    var current = 0;
-    var timer = null;
-
-    function render(){
-      var c = countries[current];
-      function apply(){
-        locEl.textContent = c.name;
-        regionEl.textContent = c.region;
-        detailsEl.textContent = 'Capital: ' + c.capital + ' · Population: ' + c.population;
-        textEl.textContent = c.text;
-        if(iconUse) iconUse.setAttribute('href', '#i-' + c.animal);
-        countEl.textContent = (current + 1) + ' / ' + countries.length;
-        if(fillEl) fillEl.style.width = (((current + 1) / countries.length) * 100).toFixed(1) + '%';
-        body.classList.remove('hide');
-      }
-      if(reduced){ apply(); } else {
-        body.classList.add('hide');
-        setTimeout(apply, 180);
-      }
-    }
-
-    function clearAuto(){ if(timer){ clearTimeout(timer); timer = null; } }
-    function scheduleAuto(){
-      clearAuto();
-      if(reduced) return;
-      timer = setTimeout(function(){ goTo((current + 1) % countries.length); }, AUTO_MS);
-    }
-    function goTo(i){
-      current = (i + countries.length) % countries.length;
-      render();
-      scheduleAuto();
-    }
-
-    prevBtn.addEventListener('click', function(){ goTo(current - 1); });
-    nextBtn.addEventListener('click', function(){ goTo(current + 1); });
-    card.addEventListener('mouseenter', clearAuto);
-    card.addEventListener('mouseleave', scheduleAuto);
-    card.addEventListener('focusin', clearAuto);
-    card.addEventListener('focusout', scheduleAuto);
-
-    render();
-    scheduleAuto();
-  })();
 
   // back-to-top button
   var toTop = document.getElementById('toTop');
