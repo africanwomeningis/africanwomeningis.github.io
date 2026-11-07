@@ -682,10 +682,10 @@ var COUNTRIES = [
         hide();
       });
     }
-    requestAnimationFrame(function(){
-      requestAnimationFrame(function(){ tip.classList.add('show'); });
-    });
-    hideTimer = setTimeout(hide, 5000);
+    setTimeout(function(){
+      tip.classList.add('show');
+      hideTimer = setTimeout(hide, 5000);
+    }, 20);
   }
 
   function init(){
