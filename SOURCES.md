@@ -1,3 +1,23 @@
+# Sources for the "What is GIS" example links
+
+The "What is GIS" section links each example card to a real, working GIS
+project (checked for a live 200 response before publishing), weighted
+toward African-led work:
+
+| Card | Example | Link |
+|---|---|---|
+| Satellite imagery & remote sensing | Digital Earth Africa, a free pan-African satellite data platform (Open Data Cube) | https://www.digitalearthafrica.org/ |
+| Drones & aerial mapping | Ramani Huria, community drone/OpenStreetMap flood-risk mapping in Dar es Salaam, Tanzania | https://ramanihuria.org/ |
+| Digital twins & 3D mapping | eThekwini Municipality's (Durban) geospatial digital twin | https://digitaltwin.durban.gov.za/ |
+| AI & machine learning | AAgWa (Africa Agriculture Watch), AKADEMIYA2063's satellite/ML crop-yield forecasting platform across 47 African countries | https://www.aagwa.org/ |
+| Location intelligence | Esri case study: Drakenstein Municipality, South Africa, using GIS to improve public services | https://www.esri.com/en-us/lg/industry/government/stories/drakenstein-municipality-south-africa-expands-gis-improve-public-services |
+| Web & mobile mapping | Bolt's own OpenStreetMap wiki page, describing its use of OSM data (and contributions back to it) across Africa | https://wiki.openstreetmap.org/wiki/Bolt |
+
+The GIS intro paragraph itself was rewritten around the "layers" concept
+(real-world data layered onto digital maps to reveal spatial patterns),
+the standard way GIS is introduced in actual intro-GIS coursework, rather
+than a generic summary.
+
 # Sources for the story card facts
 
 One source per country for the fact shown in the hero "story card" on the
