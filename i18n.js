@@ -18,6 +18,12 @@ var UI_I18N = {
     tech1_example:"See it in action: Digital Earth Africa ↗", tech2_example:"See it in action: Ramani Huria, Tanzania ↗",
     tech3_example:"See it in action: eThekwini Digital Twin ↗", tech4_example:"See it in action: AAgWa crop forecasts ↗",
     tech5_example:"See it in action: Drakenstein Municipality ↗", tech6_example:"See it in action: Bolt & OpenStreetMap ↗",
+    tech1_alt:"Satellite photo of the Okavango Delta in Botswana, taken from the International Space Station",
+    tech2_alt:"A team launches a fixed-wing survey drone for aerial mapping",
+    tech3_alt:"A 3D digital twin model of a city skyline",
+    tech4_alt:"Satellite image showing cropland expansion across Africa",
+    tech5_alt:"Map of African countries shaded by Human Development Index",
+    tech6_alt:"Screenshot of the OpenStreetMap website showing its interactive map",
     tech1_h3:"Satellite imagery & remote sensing", tech1_p:"Pictures of Earth from space, used to track change like deforestation or flooding.",
     tech2_h3:"Drones & aerial mapping", tech2_p:"Flying cameras that map small areas, like a farm or construction site, in incredible detail.",
     tech3_h3:"Digital twins & 3D mapping", tech3_p:"Realistic digital copies of real places, used to plan cities before anything gets built.",
@@ -90,6 +96,12 @@ var UI_I18N = {
     tech1_example:"À voir : Digital Earth Africa ↗", tech2_example:"À voir : Ramani Huria, Tanzanie ↗",
     tech3_example:"À voir : le jumeau numérique d'eThekwini ↗", tech4_example:"À voir : les prévisions de récoltes d'AAgWa ↗",
     tech5_example:"À voir : la municipalité de Drakenstein ↗", tech6_example:"À voir : Bolt et OpenStreetMap ↗",
+    tech1_alt:"Photo satellite du delta de l'Okavango au Botswana, prise depuis la Station spatiale internationale",
+    tech2_alt:"Une équipe lance un drone à voilure fixe pour la cartographie aérienne",
+    tech3_alt:"Un modèle 3D de jumeau numérique d'un paysage urbain",
+    tech4_alt:"Image satellite montrant l'expansion des terres cultivées en Afrique",
+    tech5_alt:"Carte des pays africains selon leur indice de développement humain",
+    tech6_alt:"Capture d'écran du site OpenStreetMap montrant sa carte interactive",
     tech1_h3:"Imagerie satellite & télédétection", tech1_p:"Des images de la Terre prises depuis l'espace, utilisées pour suivre des changements comme la déforestation ou les inondations.",
     tech2_h3:"Drones & cartographie aérienne", tech2_p:"Des caméras volantes qui cartographient de petites zones, comme une ferme ou un chantier, avec un luxe de détails.",
     tech3_h3:"Jumeaux numériques & cartographie 3D", tech3_p:"Des copies numériques réalistes de lieux réels, utilisées pour planifier des villes avant même leur construction.",
@@ -162,6 +174,12 @@ var UI_I18N = {
     tech1_example:"شاهدي المثال: Digital Earth Africa ↗", tech2_example:"شاهدي المثال: Ramani Huria، تنزانيا ↗",
     tech3_example:"شاهدي المثال: التوأم الرقمي لإيثيكويني ↗", tech4_example:"شاهدي المثال: توقعات محاصيل AAgWa ↗",
     tech5_example:"شاهدي المثال: بلدية دراكنستاين ↗", tech6_example:"شاهدي المثال: Bolt وOpenStreetMap ↗",
+    tech1_alt:"صورة بالأقمار الصناعية لدلتا أوكافانغو في بوتسوانا، التُقطت من محطة الفضاء الدولية",
+    tech2_alt:"فريق يُطلق طائرة مسيّرة ثابتة الجناحين لرسم الخرائط الجوية",
+    tech3_alt:"نموذج ثلاثي الأبعاد لتوأم رقمي لأفق مدينة",
+    tech4_alt:"صورة بالأقمار الصناعية تُظهر توسّع الأراضي الزراعية في أفريقيا",
+    tech5_alt:"خريطة للدول الأفريقية مصنّفة بحسب مؤشر التنمية البشرية",
+    tech6_alt:"لقطة شاشة لموقع OpenStreetMap تُظهر خريطته التفاعلية",
     tech1_h3:"التصوير بالأقمار الصناعية والاستشعار عن بعد", tech1_p:"صور للأرض مُلتقطة من الفضاء، تُستخدم لرصد التغيرات مثل إزالة الغابات أو الفيضانات.",
     tech2_h3:"الطائرات المسيّرة ورسم الخرائط الجوية", tech2_p:"كاميرات طائرة ترسم خرائط مناطق صغيرة، كمزرعة أو موقع بناء، بتفاصيل مذهلة.",
     tech3_h3:"التوائم الرقمية ورسم الخرائط ثلاثية الأبعاد", tech3_p:"نسخ رقمية واقعية لأماكن حقيقية، تُستخدم لتخطيط المدن قبل أن يُبنى فيها أي شيء.",
@@ -234,6 +252,12 @@ var UI_I18N = {
     tech1_example:"Veja na prática: Digital Earth Africa ↗", tech2_example:"Veja na prática: Ramani Huria, Tanzânia ↗",
     tech3_example:"Veja na prática: Gêmeo Digital de eThekwini ↗", tech4_example:"Veja na prática: previsões de safra da AAgWa ↗",
     tech5_example:"Veja na prática: Município de Drakenstein ↗", tech6_example:"Veja na prática: Bolt e OpenStreetMap ↗",
+    tech1_alt:"Foto de satélite do Delta do Okavango, em Botsuana, tirada da Estação Espacial Internacional",
+    tech2_alt:"Uma equipe lança um drone de asa fixa para mapeamento aéreo",
+    tech3_alt:"Um modelo 3D de gêmeo digital do perfil de uma cidade",
+    tech4_alt:"Imagem de satélite mostrando a expansão de terras agrícolas na África",
+    tech5_alt:"Mapa dos países africanos coloridos pelo Índice de Desenvolvimento Humano",
+    tech6_alt:"Captura de tela do site OpenStreetMap mostrando seu mapa interativo",
     tech1_h3:"Imagens de satélite & sensoriamento remoto", tech1_p:"Imagens da Terra tiradas do espaço, usadas para monitorar mudanças como desmatamento ou enchentes.",
     tech2_h3:"Drones & mapeamento aéreo", tech2_p:"Câmeras voadoras que mapeiam pequenas áreas, como uma fazenda ou um canteiro de obras, com detalhes incríveis.",
     tech3_h3:"Gêmeos digitais & mapeamento 3D", tech3_p:"Cópias digitais realistas de lugares reais, usadas para planejar cidades antes mesmo de serem construídas.",
@@ -565,6 +589,10 @@ var COUNTRIES = [
     document.querySelectorAll('[data-i18n-aria]').forEach(function(el){
       var v = t(el.getAttribute('data-i18n-aria'));
       if(v != null) el.setAttribute('aria-label', v);
+    });
+    document.querySelectorAll('[data-i18n-alt]').forEach(function(el){
+      var v = t(el.getAttribute('data-i18n-alt'));
+      if(v != null) el.setAttribute('alt', v);
     });
     var langLabel = document.getElementById('langLabel');
     if(langLabel) langLabel.textContent = LANG_CODES[currentLang];

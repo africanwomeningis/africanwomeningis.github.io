@@ -18,6 +18,24 @@ The GIS intro paragraph itself was rewritten around the "layers" concept
 the standard way GIS is introduced in actual intro-GIS coursework, rather
 than a generic summary.
 
+## Example card images
+
+Each card also shows a real photo/screenshot so visitors can see what the
+technology actually looks like, not just read about it. Every image is
+public domain or Creative Commons, checked for a live 200 response with an
+image content-type before publishing. 4 of 6 are African-specific; for
+drones and digital twins, no solidly-licensed African-specific image could
+be found, so a representative (non-African) one was used instead.
+
+| Card | Image | License / credit |
+|---|---|---|
+| Satellite imagery | NASA ISS astronaut photo of the Okavango Delta, Botswana | Public domain, NASA |
+| Drones & aerial mapping | USGS/BLM team launching a fixed-wing survey drone (Oregon, USA — not African) | Public domain, USGS via Wikimedia Commons |
+| Digital twins & 3D mapping | 3D digital-twin render of Canary Wharf, London (not African) | CC BY-SA 4.0, AccuCities via Wikimedia Commons |
+| AI & machine learning | NASA Earth Observatory satellite visualization of cropland expansion across Africa | Public domain, NASA Earth Observatory / Lauren Dauphin |
+| Location intelligence | Choropleth map of African countries by Human Development Index (2020) | Public domain, Wikimedia Commons (Asus2004) |
+| Web & mobile mapping | Screenshot of the OpenStreetMap.org homepage | CC BY-SA 2.0, OpenStreetMap contributors |
+
 # Sources for the story card facts
 
 One source per country for the fact shown in the hero "story card" on the

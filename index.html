@@ -164,11 +164,19 @@
   /* what is gis */
   .tech-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-top:8px;}
   .tech-card{
-    padding:22px; border:1px solid var(--line); border-radius:18px; background:var(--surface);
-    box-shadow:var(--card-shadow); display:grid; grid-template-rows:auto auto 1fr auto; gap:10px;
+    padding:0; border:1px solid var(--line); border-radius:18px; background:var(--surface); overflow:hidden;
+    box-shadow:var(--card-shadow); display:grid; grid-template-rows:auto 1fr;
     text-decoration:none; color:inherit; transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease;
   }
   .tech-card:hover{transform:translateY(-3px); box-shadow:0 1px 2px rgba(27,33,23,.04), 0 16px 28px -14px rgba(27,33,23,.24); border-color:var(--accent);}
+  .tech-img-wrap{position:relative; aspect-ratio:16/9; background:var(--surface-2);}
+  .tech-img-wrap img{width:100%; height:100%; object-fit:cover; display:block;}
+  .tech-credit{
+    position:absolute; bottom:7px; right:7px; font-size:.62rem; font-weight:700; letter-spacing:.02em;
+    color:#fff; background:rgba(10,14,9,.6); padding:.3em .65em; border-radius:999px;
+  }
+  :root[dir="rtl"] .tech-credit{right:auto; left:7px;}
+  .tech-card-body{padding:18px 22px 22px; display:grid; grid-template-rows:auto auto 1fr auto; gap:10px;}
   .tech-card .ico-wrap{width:40px;height:40px;border-radius:12px;background:var(--surface-2);display:flex;align-items:center;justify-content:center;}
   .tech-card h3{font-size:.96rem;}
   .tech-card p{font-size:.86rem;}
@@ -506,40 +514,76 @@
     </div>
     <div class="tech-grid">
       <a class="tech-card" href="https://www.digitalearthafrica.org/" target="_blank" rel="noopener">
-        <div class="ico-wrap"><svg class="icon" width="20" height="20"><use href="#i-satellite"/></svg></div>
-        <h3 data-i18n="tech1_h3">Satellite imagery &amp; remote sensing</h3>
-        <p data-i18n="tech1_p">Pictures of Earth from space, used to track change like deforestation or flooding.</p>
-        <span class="tech-link" data-i18n="tech1_example">See it in action: Digital Earth Africa &#8599;</span>
+        <div class="tech-img-wrap">
+          <img src="https://assets.science.nasa.gov/content/dam/science/esd/eo/images/imagerecords/84000/84078/ISS040-E-008209_lrg.jpg" loading="lazy" data-i18n-alt="tech1_alt" alt="Satellite photo of the Okavango Delta in Botswana, taken from the International Space Station">
+          <span class="tech-credit">NASA</span>
+        </div>
+        <div class="tech-card-body">
+          <div class="ico-wrap"><svg class="icon" width="20" height="20"><use href="#i-satellite"/></svg></div>
+          <h3 data-i18n="tech1_h3">Satellite imagery &amp; remote sensing</h3>
+          <p data-i18n="tech1_p">Pictures of Earth from space, used to track change like deforestation or flooding.</p>
+          <span class="tech-link" data-i18n="tech1_example">See it in action: Digital Earth Africa &#8599;</span>
+        </div>
       </a>
       <a class="tech-card" href="https://ramanihuria.org/" target="_blank" rel="noopener">
-        <div class="ico-wrap"><svg class="icon" width="20" height="20"><use href="#i-compass"/></svg></div>
-        <h3 data-i18n="tech2_h3">Drones &amp; aerial mapping</h3>
-        <p data-i18n="tech2_p">Flying cameras that map small areas, like a farm or construction site, in incredible detail.</p>
-        <span class="tech-link" data-i18n="tech2_example">See it in action: Ramani Huria, Tanzania &#8599;</span>
+        <div class="tech-img-wrap">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/e/e4/USGS_Team_Flies_Drones_for_Oregon_BLM_Forestry_Research_%2814757976186%29.jpg" loading="lazy" data-i18n-alt="tech2_alt" alt="A team launches a fixed-wing survey drone for aerial mapping">
+          <span class="tech-credit">USGS, public domain</span>
+        </div>
+        <div class="tech-card-body">
+          <div class="ico-wrap"><svg class="icon" width="20" height="20"><use href="#i-compass"/></svg></div>
+          <h3 data-i18n="tech2_h3">Drones &amp; aerial mapping</h3>
+          <p data-i18n="tech2_p">Flying cameras that map small areas, like a farm or construction site, in incredible detail.</p>
+          <span class="tech-link" data-i18n="tech2_example">See it in action: Ramani Huria, Tanzania &#8599;</span>
+        </div>
       </a>
       <a class="tech-card" href="https://digitaltwin.durban.gov.za/" target="_blank" rel="noopener">
-        <div class="ico-wrap"><svg class="icon" width="20" height="20"><use href="#i-layers"/></svg></div>
-        <h3 data-i18n="tech3_h3">Digital twins &amp; 3D mapping</h3>
-        <p data-i18n="tech3_p">Realistic digital copies of real places, used to plan cities before anything gets built.</p>
-        <span class="tech-link" data-i18n="tech3_example">See it in action: eThekwini Digital Twin &#8599;</span>
+        <div class="tech-img-wrap">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/5/5b/2024_London_Canary_Wharf.png" loading="lazy" data-i18n-alt="tech3_alt" alt="A 3D digital twin model of a city skyline">
+          <span class="tech-credit">AccuCities, CC BY-SA 4.0</span>
+        </div>
+        <div class="tech-card-body">
+          <div class="ico-wrap"><svg class="icon" width="20" height="20"><use href="#i-layers"/></svg></div>
+          <h3 data-i18n="tech3_h3">Digital twins &amp; 3D mapping</h3>
+          <p data-i18n="tech3_p">Realistic digital copies of real places, used to plan cities before anything gets built.</p>
+          <span class="tech-link" data-i18n="tech3_example">See it in action: eThekwini Digital Twin &#8599;</span>
+        </div>
       </a>
       <a class="tech-card" href="https://www.aagwa.org/" target="_blank" rel="noopener">
-        <div class="ico-wrap"><svg class="icon" width="20" height="20"><use href="#i-spark"/></svg></div>
-        <h3 data-i18n="tech4_h3">AI &amp; machine learning</h3>
-        <p data-i18n="tech4_p">Software that spots patterns in map data faster, and at a bigger scale, than any human could.</p>
-        <span class="tech-link" data-i18n="tech4_example">See it in action: AAgWa crop forecasts &#8599;</span>
+        <div class="tech-img-wrap">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/9/9b/Cropexpafrica_oli_2019.jpg" loading="lazy" data-i18n-alt="tech4_alt" alt="Satellite image showing cropland expansion across Africa">
+          <span class="tech-credit">NASA Earth Observatory</span>
+        </div>
+        <div class="tech-card-body">
+          <div class="ico-wrap"><svg class="icon" width="20" height="20"><use href="#i-spark"/></svg></div>
+          <h3 data-i18n="tech4_h3">AI &amp; machine learning</h3>
+          <p data-i18n="tech4_p">Software that spots patterns in map data faster, and at a bigger scale, than any human could.</p>
+          <span class="tech-link" data-i18n="tech4_example">See it in action: AAgWa crop forecasts &#8599;</span>
+        </div>
       </a>
       <a class="tech-card" href="https://www.esri.com/en-us/lg/industry/government/stories/drakenstein-municipality-south-africa-expands-gis-improve-public-services" target="_blank" rel="noopener">
-        <div class="ico-wrap"><svg class="icon" width="20" height="20"><use href="#i-case"/></svg></div>
-        <h3 data-i18n="tech5_h3">Location intelligence</h3>
-        <p data-i18n="tech5_p">Turning "where" data into business and policy decisions, from store sites to disaster response.</p>
-        <span class="tech-link" data-i18n="tech5_example">See it in action: Drakenstein Municipality &#8599;</span>
+        <div class="tech-img-wrap">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/3/37/African_countries_by_HDI_%282020%29.svg" loading="lazy" data-i18n-alt="tech5_alt" alt="Map of African countries shaded by Human Development Index">
+          <span class="tech-credit">Wikimedia Commons, public domain</span>
+        </div>
+        <div class="tech-card-body">
+          <div class="ico-wrap"><svg class="icon" width="20" height="20"><use href="#i-case"/></svg></div>
+          <h3 data-i18n="tech5_h3">Location intelligence</h3>
+          <p data-i18n="tech5_p">Turning "where" data into business and policy decisions, from store sites to disaster response.</p>
+          <span class="tech-link" data-i18n="tech5_example">See it in action: Drakenstein Municipality &#8599;</span>
+        </div>
       </a>
       <a class="tech-card" href="https://wiki.openstreetmap.org/wiki/Bolt" target="_blank" rel="noopener">
-        <div class="ico-wrap"><svg class="icon" width="20" height="20"><use href="#i-map"/></svg></div>
-        <h3 data-i18n="tech6_h3">Web &amp; mobile mapping</h3>
-        <p data-i18n="tech6_p">The interactive maps you already use every day, in ride-hailing and delivery apps.</p>
-        <span class="tech-link" data-i18n="tech6_example">See it in action: Bolt &amp; OpenStreetMap &#8599;</span>
+        <div class="tech-img-wrap">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/8/86/OpenStreetMap_homepage_2022_en.png" loading="lazy" data-i18n-alt="tech6_alt" alt="Screenshot of the OpenStreetMap website showing its interactive map">
+          <span class="tech-credit">OSM contributors, CC BY-SA 2.0</span>
+        </div>
+        <div class="tech-card-body">
+          <div class="ico-wrap"><svg class="icon" width="20" height="20"><use href="#i-map"/></svg></div>
+          <h3 data-i18n="tech6_h3">Web &amp; mobile mapping</h3>
+          <p data-i18n="tech6_p">The interactive maps you already use every day, in ride-hailing and delivery apps.</p>
+          <span class="tech-link" data-i18n="tech6_example">See it in action: Bolt &amp; OpenStreetMap &#8599;</span>
+        </div>
       </a>
     </div>
   </section>
@@ -800,7 +844,7 @@
 
 <button id="toTop" data-i18n-aria="toTop_aria" aria-label="Back to top"><svg class="icon" width="18" height="18" style="stroke:var(--accent-ink)"><use href="#i-up"/></svg></button>
 
-<script src="i18n.js?v=6"></script>
+<script src="i18n.js?v=7"></script>
 <script>
 (function(){
   // theme: explicit light/dark, persisted per viewer
