@@ -163,10 +163,16 @@
 
   /* what is gis */
   .tech-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-top:8px;}
-  .tech-card{padding:22px; border:1px solid var(--line); border-radius:18px; background:var(--surface); box-shadow:var(--card-shadow); display:grid; grid-template-rows:auto auto 1fr; gap:10px;}
+  .tech-card{
+    padding:22px; border:1px solid var(--line); border-radius:18px; background:var(--surface);
+    box-shadow:var(--card-shadow); display:grid; grid-template-rows:auto auto 1fr auto; gap:10px;
+    text-decoration:none; color:inherit; transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+  }
+  .tech-card:hover{transform:translateY(-3px); box-shadow:0 1px 2px rgba(27,33,23,.04), 0 16px 28px -14px rgba(27,33,23,.24); border-color:var(--accent);}
   .tech-card .ico-wrap{width:40px;height:40px;border-radius:12px;background:var(--surface-2);display:flex;align-items:center;justify-content:center;}
   .tech-card h3{font-size:.96rem;}
   .tech-card p{font-size:.86rem;}
+  .tech-link{font-size:.76rem; font-weight:700; color:var(--accent); align-self:end;}
 
   /* about */
   .about-grid{display:grid; grid-template-columns:1.1fr .9fr; gap:48px; align-items:start;}
@@ -495,39 +501,46 @@
     <div class="eyebrow"><svg class="icon" width="16" height="16"><use href="#i-globe"/></svg> <span data-i18n="gis101_eyebrow">New to GIS?</span></div>
     <div class="head" style="margin-top:16px;">
       <h2 data-i18n="gis101_h2">What is GIS, and why does it matter?</h2>
-      <p data-i18n="gis101_p">GIS, short for Geographic Information Systems, is technology that turns location and map data into real decisions: the software behind planning a hospital, tracking a flood, or routing a delivery in minutes instead of hours. AWiGIS exists to make sure African women are building and leading that work.</p>
+      <p data-i18n="gis101_p">GIS, short for Geographic Information Systems, is technology built around one core idea: almost everything is easier to understand once you know where it happens. GIS layers real-world data, like roads, population, rainfall, or disease outbreaks, onto digital maps, so patterns that are invisible in a spreadsheet become obvious at a glance. That's the software behind choosing where a hospital should go, tracking how a flood is spreading, or routing a delivery in minutes instead of hours. AWiGIS exists to make sure African women are building and leading that work.</p>
+      <p class="note" data-i18n="gis101_hint">Tap a card below to see a real example, several from right here in Africa.</p>
     </div>
     <div class="tech-grid">
-      <div class="tech-card">
+      <a class="tech-card" href="https://www.digitalearthafrica.org/" target="_blank" rel="noopener">
         <div class="ico-wrap"><svg class="icon" width="20" height="20"><use href="#i-satellite"/></svg></div>
         <h3 data-i18n="tech1_h3">Satellite imagery &amp; remote sensing</h3>
         <p data-i18n="tech1_p">Pictures of Earth from space, used to track change like deforestation or flooding.</p>
-      </div>
-      <div class="tech-card">
+        <span class="tech-link" data-i18n="tech1_example">See it in action: Digital Earth Africa &#8599;</span>
+      </a>
+      <a class="tech-card" href="https://ramanihuria.org/" target="_blank" rel="noopener">
         <div class="ico-wrap"><svg class="icon" width="20" height="20"><use href="#i-compass"/></svg></div>
         <h3 data-i18n="tech2_h3">Drones &amp; aerial mapping</h3>
         <p data-i18n="tech2_p">Flying cameras that map small areas, like a farm or construction site, in incredible detail.</p>
-      </div>
-      <div class="tech-card">
+        <span class="tech-link" data-i18n="tech2_example">See it in action: Ramani Huria, Tanzania &#8599;</span>
+      </a>
+      <a class="tech-card" href="https://digitaltwin.durban.gov.za/" target="_blank" rel="noopener">
         <div class="ico-wrap"><svg class="icon" width="20" height="20"><use href="#i-layers"/></svg></div>
         <h3 data-i18n="tech3_h3">Digital twins &amp; 3D mapping</h3>
         <p data-i18n="tech3_p">Realistic digital copies of real places, used to plan cities before anything gets built.</p>
-      </div>
-      <div class="tech-card">
+        <span class="tech-link" data-i18n="tech3_example">See it in action: eThekwini Digital Twin &#8599;</span>
+      </a>
+      <a class="tech-card" href="https://www.aagwa.org/" target="_blank" rel="noopener">
         <div class="ico-wrap"><svg class="icon" width="20" height="20"><use href="#i-spark"/></svg></div>
         <h3 data-i18n="tech4_h3">AI &amp; machine learning</h3>
         <p data-i18n="tech4_p">Software that spots patterns in map data faster, and at a bigger scale, than any human could.</p>
-      </div>
-      <div class="tech-card">
+        <span class="tech-link" data-i18n="tech4_example">See it in action: AAgWa crop forecasts &#8599;</span>
+      </a>
+      <a class="tech-card" href="https://www.esri.com/en-us/lg/industry/government/stories/drakenstein-municipality-south-africa-expands-gis-improve-public-services" target="_blank" rel="noopener">
         <div class="ico-wrap"><svg class="icon" width="20" height="20"><use href="#i-case"/></svg></div>
         <h3 data-i18n="tech5_h3">Location intelligence</h3>
         <p data-i18n="tech5_p">Turning "where" data into business and policy decisions, from store sites to disaster response.</p>
-      </div>
-      <div class="tech-card">
+        <span class="tech-link" data-i18n="tech5_example">See it in action: Drakenstein Municipality &#8599;</span>
+      </a>
+      <a class="tech-card" href="https://wiki.openstreetmap.org/wiki/Bolt" target="_blank" rel="noopener">
         <div class="ico-wrap"><svg class="icon" width="20" height="20"><use href="#i-map"/></svg></div>
         <h3 data-i18n="tech6_h3">Web &amp; mobile mapping</h3>
         <p data-i18n="tech6_p">The interactive maps you already use every day, in ride-hailing and delivery apps.</p>
-      </div>
+        <span class="tech-link" data-i18n="tech6_example">See it in action: Bolt &amp; OpenStreetMap &#8599;</span>
+      </a>
     </div>
   </section>
 
@@ -787,7 +800,7 @@
 
 <button id="toTop" data-i18n-aria="toTop_aria" aria-label="Back to top"><svg class="icon" width="18" height="18" style="stroke:var(--accent-ink)"><use href="#i-up"/></svg></button>
 
-<script src="i18n.js?v=5"></script>
+<script src="i18n.js?v=6"></script>
 <script>
 (function(){
   // theme: explicit light/dark, persisted per viewer
