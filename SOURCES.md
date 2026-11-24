@@ -30,7 +30,7 @@ be found, so a representative (non-African) one was used instead.
 | Card | Image | License / credit |
 |---|---|---|
 | Satellite imagery | NASA ISS astronaut photo of the Okavango Delta, Botswana | Public domain, NASA |
-| Drones & aerial mapping | USGS/BLM team launching a fixed-wing survey drone (Oregon, USA — not African) | Public domain, USGS via Wikimedia Commons |
+| Drones & aerial mapping | Quadcopter survey drone in flight at dusk, no people in frame (not African) | CC BY-SA 4.0, Medusasami via Wikimedia Commons |
 | Digital twins & 3D mapping | 3D digital-twin render of Canary Wharf, London (not African) | CC BY-SA 4.0, AccuCities via Wikimedia Commons |
 | AI & machine learning | NASA Earth Observatory satellite visualization of cropland expansion across Africa | Public domain, NASA Earth Observatory / Lauren Dauphin |
 | Location intelligence | Choropleth map of African countries by Human Development Index (2020) | Public domain, Wikimedia Commons (Asus2004) |
